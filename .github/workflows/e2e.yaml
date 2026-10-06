@@ -1,0 +1,8 @@
+name: use already created workflow
+on: workflow_dispatch
+
+jobs:
+   job:
+     uses: mayankbansa0105/gh-study/workflows/Reusable-internal-call.yaml@v1
+     with:
+       name: varsha
