@@ -1,17 +1,17 @@
-name: use already created workflow
+name: App CI
 
 on:
+  push:
   workflow_dispatch:
-    inputs:
-      name:
-        description: Name to pass to the reusable workflow
-        required: false
-        default: Mayank
-        type: string
 
 jobs:
-  call-reusable-workflow:
-    uses: mayankbansa0105/gh-study/.github/workflows/Reusable-internal-call.yaml@main
+  call-hello:
+    uses: mayankbansa0105/gh-study/.github/workflows/reusable-hello.yml@main
     with:
-      name: ${{ inputs.name }}
-    secrets: inherit
+      name: "Mayank"
+
+  print-result:
+    needs: call-hello
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Got back -> ${{ needs.call-hello.outputs.greeting }}"
