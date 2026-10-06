@@ -1,5 +1,10 @@
 name: use already created workflow
-on: workflow_dispatch
+on: 
+   workflow_dispatch:
+       inputs:
+         name:
+           type: string
+           default: Mayank
 
 jobs:
    job:
